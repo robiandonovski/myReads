@@ -23,6 +23,7 @@ class BooksShelf extends Component {
               <BookDetails
                 key={bookDetails.id}
                 book={bookDetails}
+                shelf={bookDetails.shelf}
                 shelfOnChange={shelfOnChange}
               />
             ))}

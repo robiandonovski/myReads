@@ -5,7 +5,8 @@ import BookDetails from './BookDetails';
 class SearchBookResults extends Component {
 
   static propTypes = {
-    books: propTypes.array.isRequired,
+    userBooks: propTypes.array.isRequired,
+    resultBooks: propTypes.array.isRequired,
     shelfOnChange: propTypes.func.isRequired
   }
 
@@ -13,18 +14,34 @@ class SearchBookResults extends Component {
     this.props.shelfOnChange(book, shelf)
   }
 
+  getShelfForBook = (bookDetails) => {
+    var bookShelf = 'none';
+
+    var book = this.props.userBooks.find((book) => (
+      book.id === bookDetails.id
+    ))
+
+    if (book) {
+      bookShelf = book.shelf
+    }
+
+    return bookShelf;
+  }
+
   render() {
 
-    const books = this.props.books;
+    const resultBooks = this.props.resultBooks
 
     return (
       <div className="search-books-results">
-        {books && (
+        {resultBooks && (
           <ol className="books-grid">
-            {books.map((bookDetails) => (
+            {resultBooks.map((bookDetails) => (
+
               <BookDetails
                 key={bookDetails.id}
                 book={bookDetails}
+                shelf={this.getShelfForBook(bookDetails)}
                 shelfOnChange={this.handleOnShalfChange}
               />
             ))}

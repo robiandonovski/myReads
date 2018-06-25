@@ -13,26 +13,38 @@ To get started developing right away:
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 
-## What You're Getting
+To build and deploy:
+
+* Build the project solution with `npm build`
+* Copy the files from 'build' folder to the server destination, in my case [link](http://myreads.robertandonovski.com).
+
+## Project file Structure
 ```bash
 ├── CONTRIBUTING.md
 ├── README.md - This file.
 ├── SEARCH_TERMS.md # The whitelisted short collection of available search terms for you to use with your app.
 ├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
+├── build # contains the deployment files
 ├── public
-│   ├── favicon.ico # React Icon, You may change if you wish.
-│   └── index.html # DO NOT MODIFY
+│   ├── favicon.ico # React Icon
+│   └── index.html # React index.html
 └── src
-    ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
+    ├── App.css # Styles for your app.
+    ├── App.js # This is the root of the app. Contains states and routes for the application.
     ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
+    ├── BookDetails.js # Component which is used to display details about one book (image, title, author and shelf)
+    ├── BookShelf.js # Component which is used to display the books on homepage separated by shelf title
+    ├── ListBooks.js # Component which is used to separate shelf grous/lists on homepage by shelf title
+    ├── SearchBook.js # Component for search book page, grouping SearchBookBar and SearchBookResults
+    ├── SearchBookBar.js # Component for search query input and back to homepage button
+    ├── SearchBookResults.js # Component for showing the searched/founded result/books from backend
     ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
-    ├── icons # Helpful images for your app. Use at your discretion.
+    ├── icons # Helpful images for the app.
     │   ├── add.svg
     │   ├── arrow-back.svg
     │   └── arrow-drop-down.svg
-    ├── index.css # Global styles. You probably won't need to change anything here.
-    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
+    ├── index.css # Global styles.
+    └── index.js # Used for DOM rendering with browser router.
 ```
 
 Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.

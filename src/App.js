@@ -34,10 +34,22 @@ class BooksApp extends Component {
     if (query.length > 0) {
       BooksAPI.search(query)
         .then((result) => {
-          this.setState({
-            searchBooks: result
-          });
+          if (result.error) {
+            this.setState({
+              searchBooks: []
+            });
+          }
+          else {
+            this.setState({
+              searchBooks: result
+            });
+          }
         })
+    }
+    else {
+      this.setState({
+        searchBooks: []
+      });
     }
   }
 
@@ -60,7 +72,8 @@ class BooksApp extends Component {
 
         <Route path='/search' render={() => (
           <SearchBook
-            books={this.state.searchBooks}
+            userBooks={this.state.userBooks}
+            resultBooks={this.state.searchBooks}
             resetSearchBooks={this.resetSearchBooks}
             searchBook={this.searchBook}
             shelfOnChange={this.bookUpdate}

@@ -6,7 +6,8 @@ import SearchBookResults from './SearchBookResults';
 class SearchBook extends Component {
 
   static propTypes = {
-    books: propTypes.array.isRequired,
+    userBooks: propTypes.array.isRequired,
+    resultBooks: propTypes.array.isRequired,
     resetSearchBooks: propTypes.func.isRequired,
     searchBook: propTypes.func.isRequired,
     shelfOnChange: propTypes.func.isRequired,
@@ -18,7 +19,7 @@ class SearchBook extends Component {
 
   render() {
 
-    const { books, searchBook, shelfOnChange } = this.props
+    const { userBooks, resultBooks, searchBook, shelfOnChange } = this.props
 
     return (
       <div className="search-books">
@@ -26,7 +27,8 @@ class SearchBook extends Component {
           onSearchChange={searchBook}
         />
         <SearchBookResults
-          books={books}
+          userBooks={userBooks}
+          resultBooks={resultBooks}
           shelfOnChange={shelfOnChange}
         />
       </div>
