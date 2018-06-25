@@ -15,7 +15,7 @@ To get started developing right away:
 
 To build and deploy:
 
-* Build the project solution with `npm build`
+* Build the project solution with `npm run build`
 * Copy the files from 'build' folder to the server destination, in my case [link](http://myreads.robertandonovski.com).
 
 ## Project file Structure
